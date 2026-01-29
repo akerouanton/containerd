@@ -285,6 +285,11 @@ func (s *Server) Wait() {
 	s.ready.Wait()
 }
 
+// GetPlugins returns the list of plugins that were loaded into containerd.
+func (s *Server) GetPlugins() []*plugin.Plugin {
+	return s.plugins
+}
+
 // LoadPlugins loads all plugins into containerd and generates an ordered graph
 // of all plugins.
 func LoadPlugins(ctx context.Context, config *srvconfig.Config) ([]plugin.Registration, error) {
